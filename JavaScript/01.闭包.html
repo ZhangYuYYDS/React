@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fun() {
+      let arr = Array(10000000)
+      function fun1() {// arr 加入 Closure
+        console.log(arr)
+      }
+      return function fun2() { }
+    }
+    window.f = fun()// 长久持有fun2的引用
+
+  </script>
+</body>
+
+</html>

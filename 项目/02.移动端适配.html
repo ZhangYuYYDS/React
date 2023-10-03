@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 方案一：rem */
+    /* div {
+      background: orange;
+      width: 5rem;
+      height: 5rem;
+    } */
+    /* 方案二：百分比布局：计算复杂且存在误差 */
+    /* div {
+      background: orange;
+      width: 26.6%;
+      height: 50px;
+    } */
+    /* 方案三：vw/vh方案 */
+    div {
+      background: orange;
+      width: 1vw;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <!-- 方案一：rem+手动计算font-size -->
+  <!-- <script>
+    const htmlEl = document.documentElement
+
+    function setRemUnit() {
+      // 获取html的宽度（视口的宽度）
+      const htmlWidth = htmlEl.clientWidth
+      console.log("htmlWidth", htmlWidth)
+      // 根据宽度计算一个html的font-size的大小
+      const htmlFontSize = htmlWidth / 10
+      console.log("fontSize", htmlFontSize)
+      // 将font-size设置到html上
+      htmlEl.style.fontSize = htmlFontSize + "px"
+    }
+
+    // 保证第一次进来时，可以设置一次font-size
+    setRemUnit()
+
+    // 当屏幕尺寸发生变化时，实时来修改html的font-size 
+    window.addEventListener("resize", setRemUnit)
+  </script> -->
+</body>
+
+</html>

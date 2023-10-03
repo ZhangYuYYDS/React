@@ -53,99 +53,96 @@
 
   <script>
 
-    // 监听dom执行完成后就执行JavaScript代码
-    document.addEventListener('DOMContentLoaded', function () {
-      // 根据历史记录渲染历史列表
-      // 获取localStorage数据数据是json格式
-      var historyListJson = localStorage.getItem('historyList') || '[]'; //historyList预设的键;
-      //把json数据转换成数组
-      var historyListArr = JSON.parse(historyListJson);
+    // 根据历史记录渲染历史列表
+    // 获取localStorage数据数据是json格式
+    var historyListJson = localStorage.getItem('historyList') || '[]'; //historyList预设的键;
+    //把json数据转换成数组
+    var historyListArr = JSON.parse(historyListJson);
 
-      // 1. 渲染数据
-      function render() {
-        // 定义一个空html
-        var html = '';
-        // 遍历数组
-        historyListArr.forEach((item, index) => {
-          html = `<li><span>${item}</span><button data-index="${index}">删除</button></li>` + html
-        });
-        // 判断html里面有数据没
-        html = html || '<li>没有搜索记录</li>';
-        // 把数据渲染到ul里面
-        const ul = document.querySelector('ul')
-        ul.innerHTML = html
+    // 1. 渲染数据
+    function render() {
+      // 定义一个空html
+      var html = '';
+      // 遍历数组
+      historyListArr.forEach((item, index) => {
+        html = `<li><span>${item}</span><button data-index="${index}">删除</button></li>` + html
+      });
+      // 判断html里面有数据没
+      html = html || '<li>没有搜索记录</li>';
+      // 把数据渲染到ul里面
+      const ul = document.querySelector('ul')
+      ul.innerHTML = html
+    }
+    render();
+    // ------------------------------------------------------------------------------------------------------------------------------
+
+    // 2. 点击搜索的时候更新历史搜索记录
+    const button = document.querySelector('input[type="button"]');
+    button.addEventListener('click', function () {
+      // 获取搜索框的内容
+      var key = document.querySelector('input').value;
+
+      // 判断点击搜索、搜索框内没有内容提示用户
+      if (!key) {
+        alert('请输入内容');
+        return false;
       }
-      render();
-      // ------------------------------------------------------------------------------------------------------------------------------
 
-      // 2. 点击搜索的时候更新历史搜索记录
-      const button = document.querySelector('input[type="button"]');
-      button.addEventListener('click', function () {
-        // 获取搜索框的内容
-        var key = document.querySelector('input').value;
-
-        // 判断点击搜索、搜索框内没有内容提示用户
-        if (!key) {
-          alert('请输入内容');
-          return false;
-        }
-
-        // 去重函数
-        function killRepeat(val) {
-          var kill = 0
-          for (let i = historyListArr.length - 1; i >= 0; i--) {
-            if (val === historyListArr[i]) {
-              kill++
-            }
+      // 去重函数
+      function killRepeat(val) {
+        var kill = 0
+        for (let i = historyListArr.length - 1; i >= 0; i--) {
+          if (val === historyListArr[i]) {
+            kill++
           }
-          return kill
         }
-        if (killRepeat(key) == 0) {
-          // 追加数据到historyListArr数组中
-          historyListArr.push(key);
-          // 保存更新追加的数据到json数据中
-          localStorage.setItem('historyList', JSON.stringify(historyListArr));
-          // 渲染数据/直接调用前面的渲染数据函数
-          render();
-        }
-
-        // 清空搜索框
-        document.querySelector('input[type="search"]').value = '';
-        // 页面跳转`·····
-      });
-      // ------------------------------------------------------------------------------------------------------------------------
-
-      // 3. 删除数据：因为a的id是动态生成的需要冲ul拿到a的id
-      // 获取 ul 元素
-      const ul = document.querySelector('ul');
-      ul.addEventListener('click', function (event) {
-        if (event.target.tagName === 'BUTTON') {
-          // 获取点击的 div 元素的id
-          const index = event.target.dataset.index;
-          // 删除数组内的指定位置数据
-          historyListArr.splice(index, 1);
-
-          // 保存更新追加的数据到json数据中
-          localStorage.setItem('historyList', JSON.stringify(historyListArr));
-
-          // 渲染数据/直接调用前面的渲染数据函数
-          render();
-        }
-      });
-
-      // ---------------------------------------------------------------------------------------------------------------------------
-      // 4. 清除全部历史记录
-      const div = document.querySelector('div');
-      div.addEventListener('click', function () {
-        // 清空数据
-        historyListArr = [];
-
-        // 删除空数据
-        localStorage.removeItem('historyList');
-
-        // 渲染数据
+        return kill
+      }
+      if (killRepeat(key) == 0) {
+        // 追加数据到historyListArr数组中
+        historyListArr.push(key);
+        // 保存更新追加的数据到json数据中
+        localStorage.setItem('historyList', JSON.stringify(historyListArr));
+        // 渲染数据/直接调用前面的渲染数据函数
         render();
-      });
+      }
+
+      // 清空搜索框
+      document.querySelector('input[type="search"]').value = '';
+      // 页面跳转`·····
+    });
+    // ------------------------------------------------------------------------------------------------------------------------
+
+    // 3. 删除数据：因为a的id是动态生成的需要冲ul拿到a的id
+    // 获取 ul 元素
+    const ul = document.querySelector('ul');
+    ul.addEventListener('click', function (event) {
+      if (event.target.tagName === 'BUTTON') {
+        // 获取点击的 div 元素的id
+        const index = event.target.dataset.index;
+        // 删除数组内的指定位置数据
+        historyListArr.splice(index, 1);
+
+        // 保存更新追加的数据到json数据中
+        localStorage.setItem('historyList', JSON.stringify(historyListArr));
+
+        // 渲染数据/直接调用前面的渲染数据函数
+        render();
+      }
+    });
+
+    // ---------------------------------------------------------------------------------------------------------------------------
+    // 4. 清除全部历史记录
+    const div = document.querySelector('div');
+    div.addEventListener('click', function () {
+      // 清空数据
+      historyListArr = [];
+
+      // 删除空数据
+      localStorage.removeItem('historyList');
+
+      // 渲染数据
+      render();
     });
   </script>
 

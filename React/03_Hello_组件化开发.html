@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // 类组件
+    class App extends React.Component {
+      // 组件数据
+      constructor() {
+        super()
+        this.state = {
+          message: "Hello World"
+        }
+      }
+
+      // 组件方法
+      btnClick() {
+        // 内部完成了两件事：
+        // 1. 将state中的message值修改掉
+        // 2. 自动重新执行render函数
+        this.setState({
+          message: "Hello React"
+        })
+      }
+
+      // 渲染内容
+      render() {
+        // 简单数据
+        // return <h2>Hello World</h2>
+
+        // 复杂数据
+        return (
+          <div>
+            <h2>{this.state.message}</h2>
+
+
+            <button onClick={this.btnClick.bind(this)}>修改文本</button>
+          </div>
+        )
+      }
+      // 为什么这里要bind一下? 因为类中的方法中的this默认指向undefined, 所以要将render函数中的this给方法
+
+    }
+
+    // 将组件渲染到界面上
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // 类组件
+    class App extends React.Component {
+      // 组件数据
+      constructor() {
+        super()
+        this.state = {
+          movies: ["星际穿越", "星期三", "独行月球", "复仇者联盟"]
+        }
+      }
+
+
+      // 渲染内容
+      render() {
+        const liEls = this.state.movies.map(movie => <li>{movie}</li>)
+
+        return (
+          <div>
+            <h2>电影列表</h2>
+            <ul>
+              {liEls}
+            </ul>
+          </div>
+        )
+      }
+
+    }
+
+    // 将组件渲染到界面上
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+
+
+
+  </script>
+</body>
+
+</html>

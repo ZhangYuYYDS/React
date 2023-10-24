@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          title: "哈哈哈",
+          imgURL: "https://ts1.cn.mm.bing.net/th/id/R-C.6786a2ea10625b791bfe2b2b0e3a8ce6?rik=NN0s5ZWs2rYqmQ&riu=http%3a%2f%2fimg.coozhi.com%2fupload%2fimage%2f201905%2f10170901-52467.jpg&ehk=6PU9SzCV9PaLyWgVqYDeC9%2bcJrT2LMBVW1JDDqqu3CE%3d&risl=&pid=ImgRaw&r=0",
+          href: "https://www.baidu.com",
+          isActive: true
+        }
+      }
+
+      render() {
+        const { title, imgURL, href, isActive } = this.state
+        return (
+          <div>
+            { /*1. 基本绑定*/}
+            <h2 title={title}>我是h2元素</h2>
+            <img src={imgURL} alt="" />
+            <a href={href}>百度一下</a>
+
+            {/*2. 绑定class属性：最好使用className*/}
+            <h2 className="abc cba">哈哈哈</h2>
+
+            {/*需求：isActive：true -> active*/}
+            <h2 className={`abc cba ${isActive ? 'active' : ''}`}>哈哈哈</h2>
+
+            {/*3. 绑定style属性：绑定对象类型*/}
+            <h2 style={{ color: "red" }}>呵呵呵</h2>
+          </div>
+        )
+      }
+
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    /*
+    this的四种绑定规则：
+    1. 默认绑定 独立执行 
+    2. 隐式绑定 作为对象中的方法执行
+    3. 显式绑定 call apply bind
+    4. new绑定
+    */
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          counter: 100
+        }
+      }
+
+      btn1Click() {
+        console.log("btn1Click")
+        this.setState({ counter: this.state.counter + 1 })
+      }
+
+      // 所有实例都会有btn2Click这个字段，将一个箭头函数赋值给btn2Click，而箭头函数没有this，就会去上层作用域中查找，找到的是当前类的作用域的this，而this正好指向当前实例
+      btn2Click = () => {
+        console.log("btn2Click")
+        this.setState({ counter: this.state.counter + 1 })
+      }
+
+      btn3Click = () => {
+        console.log("btn3Click")
+        this.setState({ counter: this.state.counter + 1 })
+      }
+
+      render() {
+        return (
+          <div>
+            <h2>当前计数：{this.state.counter}</h2>
+
+            {/*1. this绑定方式一：bind绑定*/}
+            <button onClick={this.btn1Click.bind(this)}>按钮1</button>
+
+            {/*2. this绑定方式二：ES6 class fields*/}
+            <button onClick={this.btn2Click}>按钮2</button>
+
+            {/*3. this绑定方式三：直接传入一个箭头函数(重要)*/}
+            <button onClick={() => this.btn3Click()}>按钮3</button>
+            {/*怎么做的？形成一个隐式绑定，this是当前实例，btn3Click作为当前实例的方法被调用*/}
+          </div>
+        )
+      }
+
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

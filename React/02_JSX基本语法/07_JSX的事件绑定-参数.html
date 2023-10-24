@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          counter: 100
+        }
+      }
+
+      btn1Click(event) {
+        console.log("btn1Click", event)
+      }
+
+      btn2Click(event, name, age) {
+        console.log("btn2Click", event, name, age)
+      }
+
+      render() {
+        return (
+          <div>
+            <h2>当前计数：{this.state.counter}</h2>
+
+            {/*1. event参数的传递 */}
+            <button onClick={this.btn1Click.bind(this)}>按钮1</button>
+            <button onClick={(event) => this.btn1Click(event)}>按钮1</button>
+
+            {/*2. 额外的参数传递*/}
+            <button onClick={this.btn2Click.bind(this,)}>按钮2</button>
+            <button onClick={(event) => this.btn1Click(event, "zy", 18)}>按钮2</button>
+
+          </div>
+        )
+      }
+
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>计数器</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // 类组件
+    class App extends React.Component {
+      // 组件数据
+      constructor() {
+        super()
+        this.state = {
+          counter: 100
+        }
+
+        this.increment = this.increment.bind(this)
+        this.decrement = this.decrement.bind(this)
+      }
+
+      // 组件方法
+      increment() {
+        this.setState({
+          counter: this.state.counter + 1
+        })
+      }
+
+      decrement() {
+        this.setState({
+          counter: this.state.counter - 1
+        })
+      }
+      // 渲染内容
+      render() {
+        const { counter } = this.state
+
+        return (
+          <div>
+            <h2>当前计数：{counter}</h2>
+            <button onClick={this.increment}>+1</button>
+            <button onClick={this.decrement}>-1</button>
+          </div>
+        )
+      }
+
+    }
+
+    // 将组件渲染到界面上
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+
+
+
+  </script>
+</body>
+
+</html>

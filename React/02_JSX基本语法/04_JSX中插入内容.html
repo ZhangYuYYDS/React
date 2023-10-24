@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>JSX中插入内容</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          counter: 100,
+          message: "Hello World",
+          movies: ["星际穿越", "独行月球", "星期三"],
+
+          aaa: undefined,
+          bbb: null,
+          ccc: true,
+
+          info: { name: 'zy', age: 20 }
+        }
+      }
+
+      render() {
+        const { message, counter, movies } = this.state
+        const { aaa, bbb, ccc } = this.state
+        const { info } = this.state
+
+        return (
+          <div>
+            {/*1. Number/String/Array直接显示出来*/}
+            <h2>{message}</h2>
+            <h2>{counter}</h2>
+            <h2>{movies}</h2>
+
+            {/*2. null/undefined/Boolean时内容为空*/}
+            <h2>{aaa}</h2>
+            <h2>{bbb}</h2>
+            <h2>{ccc}</h2>
+
+            {/*3. Object类型不能作为子元素进行显示*/}
+            <h2>{info}</h2>
+
+            <h2>{info.name}</h2>
+            <h2>{Object.keys(info)[0]}</h2>
+          </div>
+        )
+      }
+
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

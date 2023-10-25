@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <!-- 添加依赖 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          students: [
+            { id: 1, name: "zy", score: 99 },
+            { id: 2, name: "lgc", score: 88 },
+            { id: 3, name: "mxy", score: 100 }
+          ]
+        }
+      }
+
+      render() {
+        const { students } = this.state
+        return (
+          <div>
+            <h2>学生列表数据</h2>
+            <div className="list">
+              {
+                students.map(item => {
+                  return (
+                    <div className="item" key={item.id}>
+                      <h2>学号：{item.id}</h2>
+                      <h2>姓名：{item.name}</h2>
+                      <h2>分数：{item.score}</h2>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+        )
+      }
+
+    }
+
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App />);
+  </script>
+</body>
+
+</html>

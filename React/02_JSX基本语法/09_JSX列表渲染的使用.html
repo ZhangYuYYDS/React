@@ -22,7 +22,9 @@
           students: [
             { id: 1, name: "zy", score: 99 },
             { id: 2, name: "lgc", score: 88 },
-            { id: 3, name: "mxy", score: 100 }
+            { id: 3, name: "mxy", score: 100 },
+            { id: 4, name: "jack", score: 66 },
+            { id: 5, name: "kobe", score: 92 },
           ]
         }
       }
@@ -34,7 +36,8 @@
             <h2>学生列表数据</h2>
             <div className="list">
               {
-                students.map(item => {
+                //  选出成绩大于90分的人
+                students.filter(item => item.score > 90).map(item => {
                   return (
                     <div className="item" key={item.id}>
                       <h2>学号：{item.id}</h2>

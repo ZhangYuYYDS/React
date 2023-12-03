@@ -14,6 +14,7 @@ class App extends React.Component {
         return (
             <div>
                 <h2>{message}</h2>
+                {/* 组件  */}
                 <HelloWorld/>
             </div>
         );

@@ -1,0 +1,43 @@
+<mxfile host="65bd71144e">
+    <diagram id="J9l-J37EI4IVKd0rpUry" name="第 1 页">
+        <mxGraphModel dx="607" dy="443" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;setState：修改meg值，但还没执行到render函数中&lt;/span&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFCC;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="410" width="230" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="render函数：渲染了home组件" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFCC;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="490" width="230" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=none;html=1;fontColor=#000000;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBorderColor=#FF0000;" edge="1" parent="1" target="2">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="320" y="400" as="targetPoint"/>
+                        <mxPoint x="490" y="460" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=none;shape=link;labelBorderColor=#66FFFF;fontColor=none;labelBackgroundColor=none;noLabel=1;" edge="1" parent="1" target="10">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="440" y="600" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=none;" vertex="1" connectable="0" parent="11">
+                    <mxGeometry x="-0.1205" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=none;" vertex="1" connectable="0" parent="11">
+                    <mxGeometry x="-0.3787" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;home组件：用到了meg的值，this.state.meg&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFCC;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="320" width="230" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;home组件：用到了meg的值，this.state.meg&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFCC;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="320" width="230" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

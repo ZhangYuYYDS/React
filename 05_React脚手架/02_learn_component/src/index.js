@@ -10,7 +10,9 @@ import ReactDOM from 'react-dom/client';
 // import App from './08_组件作用域插槽/App';
 // import App from './09_非父子通信-Context/App';
 // import App from './10_非父子通信-EventBus/App';
-import App from './11_setState的详细使用/App';
+// import App from './11_setState的详细使用/App';
+// import App from './12_render函数的优化/App';
+import App from './13_ref获取DOM/App';
 import React from 'react';
 
 const container = document.getElementById('root');

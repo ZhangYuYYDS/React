@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { PureComponent, createRef } from 'react';
+import React, { PureComponent } from 'react';
 
 export class App extends PureComponent {
     constructor(props) {
@@ -14,9 +14,7 @@ export class App extends PureComponent {
                 { value: 'rap', text: 'rap', ischecked: false },
             ],
             fruit: ['watermelon'],
-            info: 'hahaha',
         };
-        this.titleRef = createRef();
     }
     changeInput = (e) => {
         // 将多个表单放到一个事件中处理
@@ -46,10 +44,9 @@ export class App extends PureComponent {
         console.log(this.state.username, this.state.password);
         const hobbies = this.state.hobbies.filter((item) => item.ischecked).map((item) => item.value);
         console.log('获取爱好', hobbies);
-        console.log(this.titleRef.current.value);
     };
     render() {
-        const { username, password, isAgree, hobbies, fruit,  info } = this.state;
+        const { username, password, isAgree, hobbies, fruit } = this.state;
         return (
             <div>
                 <form
@@ -128,9 +125,6 @@ export class App extends PureComponent {
                         <option value="watermelon">西瓜</option>
                         <option value="organge">桔子</option>
                     </select>
-
-                    {/* 5. 非受控组件 */}
-                    <input type="text" defaultValue={info} ref={this.titleRef} />
 
                     <button type="submit">注册</button>
                 </form>
